@@ -5,10 +5,6 @@
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
     <a href="/dashboard">Dashboard</a>
-    <form class="my-2 px-2" action="/" method="get">
-        <label for="warehouse_location">Enter warehouse location</label>
-        <input name="warehouse_location" type="text" id="warehouse_location">
-    </form>
     {% if user.id %}
         Welcome, {{ user.first_name }}
     {% else %}

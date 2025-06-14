@@ -11,8 +11,17 @@
         </div>
     </div>
 
+    <!-- Form for Warehouse Location -->
+    <form method="get" class="mt-2 d-flex gap-2">
+        <div class="mb-3 flex-grow-1">
+            <label for="warehouseLocation" class="form-label fs-4">Enter Warehouse Location</label>
+            <input type="text" class="form-control" id="warehouseLocation" name="warehouse_location"
+                   placeholder="e.g., Cairo, NY" value="{{ warehouse_location }}">
+        </div>
+    </form>
+
     <!-- Description -->
-    <div class="mt-5">
+    <div class="mt-2">
         <h2>Welcome to {{ warehouse_location|title }} Warehouse</h2>
         <p>
             InventoryApp is a simple and intuitive inventory management system designed for small businesses and
@@ -25,4 +34,47 @@
             interactions, and web UI design.
         </p>
     </div>
+    <!-- Feature Cards -->
+    <div class="row mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        👥 Manage Users
+                    </h4>
+                    <p class="card-text">
+                        Add, update, or remove users and assign roles to control access across the system.
+                        Keep your platform secure and organized.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        📦 Manage Inventory
+                    </h4>
+                    <p class="card-text">
+                        Keep track of stock levels, add new products, and organize your inventory with real-time updates
+                        and categorization.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        🚚 Track Shipments
+                    </h4>
+                    <p class="card-text">
+                        Monitor outgoing and incoming shipments, update statuses, and reduce delivery delays
+                        with efficient tracking tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock content %}
