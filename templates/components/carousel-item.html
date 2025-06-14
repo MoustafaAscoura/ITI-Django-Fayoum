@@ -1,0 +1,4 @@
+{% load static %}
+<div class="carousel-item {% if image_index|slugify|stringformat:"s" == "1" %} active {% endif %}">
+    <img src="{% static image_link %}" class="d-block w-100" alt="Inventory">
+</div>

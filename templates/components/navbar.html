@@ -1,0 +1,17 @@
+<!-- Sidebar Navigation -->
+<nav class="sidebar d-flex flex-column">
+    <h4 class="text-center py-3 border-bottom">Warehouse</h4>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/dashboard">Dashboard</a>
+    <form class="my-2 px-2" action="/" method="get">
+        <label for="warehouse_location">Enter warehouse location</label>
+        <input name="warehouse_location" type="text" id="warehouse_location">
+    </form>
+    {% if user.id %}
+        Welcome, {{ user.first_name }}
+    {% else %}
+        <a href="/" class="btn btn-light text-dark mx-4 p-2 mt-auto mb-4">Login</a>
+    {% endif %}
+</nav>

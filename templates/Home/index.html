@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>This is home page</h1>
-    <p>This is retrieved from templates in project folder</p>
-    <p>Current user: {{ user }}</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Carousel (Static with no JS) -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for i in "123"|make_list %}
+                {% include "components/carousel-item.html" with image_link='Home/images/hero-'|add:i|stringformat:"s"|add:'.jpg' image_index=i %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mt-5">
+        <h2>Welcome to {{ warehouse_location|title }} Warehouse</h2>
+        <p>
+            InventoryApp is a simple and intuitive inventory management system designed for small businesses and
+            educational projects.
+            Easily manage your products, track stock levels, monitor sales performance, and gain insights from clean
+            dashboards.
+        </p>
+        <p>
+            This educational version gives students hands-on experience with key concepts like CRUD operations, database
+            interactions, and web UI design.
+        </p>
+    </div>
+{% endblock content %}

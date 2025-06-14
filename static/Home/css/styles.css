@@ -1,0 +1,32 @@
+body {
+    display: flex;
+}
+
+.sidebar {
+    min-width: 200px;
+    max-width: 200px;
+    height: 100vh;
+    background-color: #343a40;
+    color: white;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #495057;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 300px;
+}
