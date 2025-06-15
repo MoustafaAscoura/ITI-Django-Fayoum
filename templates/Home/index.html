@@ -2,79 +2,186 @@
 {% load static %}
 
 {% block content %}
-    <!-- Carousel (Static with no JS) -->
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            {% for i in "123"|make_list %}
-                {% include "components/carousel-item.html" with image_link='Home/images/hero-'|add:i|stringformat:"s"|add:'.jpg' image_index=i %}
-            {% endfor %}
+    <div class="flex flex-wrap justify-between gap-3 p-4"><p
+            class="text-[#111418] tracking-light text-[32px] font-bold leading-tight min-w-72">Dashboard</p></div>
+    <div class="flex flex-wrap gap-4 p-4">
+        <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#dce0e5]">
+            <p class="text-[#111418] text-base font-medium leading-normal">Total Items</p>
+            <p class="text-[#111418] tracking-light text-2xl font-bold leading-tight">1,250</p>
+        </div>
+        <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#dce0e5]">
+            <p class="text-[#111418] text-base font-medium leading-normal">Out of Stock</p>
+            <p class="text-[#111418] tracking-light text-2xl font-bold leading-tight">50</p>
+        </div>
+        <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 border border-[#dce0e5]">
+            <p class="text-[#111418] text-base font-medium leading-normal">Recent Activity</p>
+            <p class="text-[#111418] tracking-light text-2xl font-bold leading-tight">10</p>
         </div>
     </div>
-
-    <!-- Form for Warehouse Location -->
-    <form method="get" class="mt-2 d-flex gap-2">
-        <div class="mb-3 flex-grow-1">
-            <label for="warehouseLocation" class="form-label fs-4">Enter Warehouse Location</label>
-            <input type="text" class="form-control" id="warehouseLocation" name="warehouse_location"
-                   placeholder="e.g., Cairo, NY" value="{{ warehouse_location }}">
+    <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Inventory
+        Summary</h2>
+    <div class="px-4 py-3 @container">
+        <div class="flex overflow-hidden rounded-xl border border-[#dce0e5] bg-white">
+            <table class="flex-1">
+                <thead>
+                <tr class="bg-white">
+                    <th class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-120 px-4 py-3 text-left text-[#111418] w-[400px] text-sm font-medium leading-normal">
+                        Item Name
+                    </th>
+                    <th class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-240 px-4 py-3 text-left text-[#111418] w-[400px] text-sm font-medium leading-normal">
+                        Category
+                    </th>
+                    <th class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-360 px-4 py-3 text-left text-[#111418] w-[400px] text-sm font-medium leading-normal">
+                        Quantity
+                    </th>
+                    <th class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-480 px-4 py-3 text-left text-[#111418] w-60 text-sm font-medium leading-normal">
+                        Status
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="border-t border-t-[#dce0e5]">
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-120 h-[72px] px-4 py-2 w-[400px] text-[#111418] text-sm font-normal leading-normal">
+                        Textbooks
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-240 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        Books
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        500
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                        <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal w-full"
+                        >
+                            <span class="truncate">In Stock</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="border-t border-t-[#dce0e5]">
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-120 h-[72px] px-4 py-2 w-[400px] text-[#111418] text-sm font-normal leading-normal">
+                        Laptops
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-240 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        Electronics
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        100
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                        <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal w-full"
+                        >
+                            <span class="truncate">In Stock</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="border-t border-t-[#dce0e5]">
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-120 h-[72px] px-4 py-2 w-[400px] text-[#111418] text-sm font-normal leading-normal">
+                        Projectors
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-240 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        Electronics
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        20
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                        <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal w-full"
+                        >
+                            <span class="truncate">In Stock</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="border-t border-t-[#dce0e5]">
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-120 h-[72px] px-4 py-2 w-[400px] text-[#111418] text-sm font-normal leading-normal">
+                        Lab Equipment
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-240 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        Science
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        50
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                        <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal w-full"
+                        >
+                            <span class="truncate">In Stock</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="border-t border-t-[#dce0e5]">
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-120 h-[72px] px-4 py-2 w-[400px] text-[#111418] text-sm font-normal leading-normal">
+                        Art Supplies
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-240 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        Arts
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-360 h-[72px] px-4 py-2 w-[400px] text-[#637488] text-sm font-normal leading-normal">
+                        50
+                    </td>
+                    <td class="table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                        <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f0f2f4] text-[#111418] text-sm font-medium leading-normal w-full"
+                        >
+                            <span class="truncate">Out of Stock</span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-    </form>
+        <style>
+            @container(max-width:120px) {
+                .table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-120 {
+                    display: none;
+                }
+            }
 
-    <!-- Description -->
-    <div class="mt-2">
-        <h2>Welcome to {{ warehouse_location|title }} Warehouse</h2>
-        <p>
-            InventoryApp is a simple and intuitive inventory management system designed for small businesses and
-            educational projects.
-            Easily manage your products, track stock levels, monitor sales performance, and gain insights from clean
-            dashboards.
-        </p>
-        <p>
-            This educational version gives students hands-on experience with key concepts like CRUD operations, database
-            interactions, and web UI design.
-        </p>
+            @container(max-width:240px) {
+                .table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-240 {
+                    display: none;
+                }
+            }
+
+            @container(max-width:360px) {
+                .table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-360 {
+                    display: none;
+                }
+            }
+
+            @container(max-width:480px) {
+                .table-234dda3c-b868-4486-a3d5-e70164d4c10f-column-480 {
+                    display: none;
+                }
+            }
+        </style>
     </div>
-    <!-- Feature Cards -->
-    <div class="row mt-5">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        👥 Manage Users
-                    </h4>
-                    <p class="card-text">
-                        Add, update, or remove users and assign roles to control access across the system.
-                        Keep your platform secure and organized.
-                    </p>
-                </div>
+    <div class="flex items-center justify-center p-4">
+        <a href="#" class="flex size-10 items-center justify-center">
+            <div class="text-[#111418]" data-icon="CaretLeft" data-size="18px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor"
+                     viewBox="0 0 256 256">
+                    <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+                </svg>
             </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        📦 Manage Inventory
-                    </h4>
-                    <p class="card-text">
-                        Keep track of stock levels, add new products, and organize your inventory with real-time updates
-                        and categorization.
-                    </p>
-                </div>
+        </a>
+        <a class="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center text-[#111418] rounded-full bg-[#f0f2f4]"
+           href="#">1</a>
+        <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#111418] rounded-full"
+           href="#">2</a>
+        <a class="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#111418] rounded-full"
+           href="#">3</a>
+        <a href="#" class="flex size-10 items-center justify-center">
+            <div class="text-[#111418]" data-icon="CaretRight" data-size="18px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" fill="currentColor"
+                     viewBox="0 0 256 256">
+                    <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+                </svg>
             </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        🚚 Track Shipments
-                    </h4>
-                    <p class="card-text">
-                        Monitor outgoing and incoming shipments, update statuses, and reduce delivery delays
-                        with efficient tracking tools.
-                    </p>
-                </div>
-            </div>
-        </div>
+        </a>
     </div>
 
 {% endblock content %}

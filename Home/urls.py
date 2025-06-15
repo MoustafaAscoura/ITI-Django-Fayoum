@@ -2,14 +2,16 @@ from django.urls import path
 
 from . import views
 
-# Route - Path  --> "/home" "/cart"
-# Rule -> If user go to path, then go to function
-# View function
-# Router
-
 urlpatterns = [
-    path('', views.index, name='index'), # Rule
+    path('', views.index, name='dashboard'),
     path('about/', views.about, name="about"),
     path('contact/', views.contact, name="contact"),
-    path('dashboard/', views.dashboard, name="dashboard"),
+    path('warehouses/', views.GetAllWarehouses.as_view(), name="warehouses"),
+    path('warehouses/details/<int:pk>', views.GetOneWarehouse.as_view(), name="warehouse_details"),
+    path('warehouses/add', views.create_warehouse, name="create_warehouse"),
+
+    path('inventory/', views.about, name="inventory"),
+    path('purchase_orders/', views.about, name="purchase_orders"),
+    path('sales_orders/', views.about, name="sales_orders"),
+    path('customers/', views.about, name="customers"),
 ]

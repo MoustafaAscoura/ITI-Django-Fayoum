@@ -1,3 +1,5 @@
+import random
+
 from django.db import models
 
 governorates = {
@@ -8,16 +10,11 @@ governorates = {
     'aswan': 'Aswan Governorate',
 }
 
-class WarehouseShippingCost(models.Model):
-    governorate_name = models.CharField(max_length=100, null=False, blank=False, choices=list(governorates.items()),
-                                        unique=True)
-    shipping_cost = models.DecimalField(decimal_places=2, max_digits=10)
-
-
 class Warehouse(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     location = models.CharField(max_length=100, null=False, blank=False, choices=list(governorates.items()))
 
+    description = models.TextField(null=False, blank=False)
     capacity = models.IntegerField(null=False, blank=False)
     manager = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True)
 
@@ -32,5 +29,4 @@ class Warehouse(models.Model):
 
     @property
     def shipping_cost(self):
-        shipping = WarehouseShippingCost.objects.get(governorate_name=self.location)
-        return shipping.shipping_cost or 0
+        return random.randint(10,100)

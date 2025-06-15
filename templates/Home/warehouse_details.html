@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Warehouse Details
+{% endblock title %}
+
+{% block content %}
+    <div class="flex flex-col flex-1">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+                <p class="text-[#121416] tracking-light text-[32px] font-bold leading-tight min-w-72">{{ warehouse.name }}</p>
+                <button
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-medium leading-normal"
+                >
+                    <span class="truncate">Edit</span>
+                </button>
+            </div>
+            <div class="p-4 grid grid-cols-[20%_1fr] gap-x-6">
+                <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dde0e3] py-5">
+                    <p class="text-[#6a7581] text-sm font-normal leading-normal">Name</p>
+                    <p class="text-[#121416] text-sm font-normal leading-normal">{{ warehouse.name }}</p>
+                </div>
+                <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dde0e3] py-5">
+                    <p class="text-[#6a7581] text-sm font-normal leading-normal">Location</p>
+                    <p class="text-[#121416] text-sm font-normal leading-normal">{{ warehouse.full_location }}</p>
+                </div>
+                <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dde0e3] py-5">
+                    <p class="text-[#6a7581] text-sm font-normal leading-normal">Capacity</p>
+                    <p class="text-[#121416] text-sm font-normal leading-normal">{{ warehouse.capacity }}</p>
+                </div>
+                <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dde0e3] py-5">
+                    <p class="text-[#6a7581] text-sm font-normal leading-normal">Manager</p>
+                    <p class="text-[#121416] text-sm font-normal leading-normal">{{ warehouse.manager.first_name }} {{ warehouse.manager.last_name }}</p>
+                </div>
+                <div class="col-span-2 grid grid-cols-subgrid border-t border-t-[#dde0e3] py-5">
+                    <p class="text-[#6a7581] text-sm font-normal leading-normal">Shipping Cost</p>
+                    <p class="text-[#121416] text-sm font-normal leading-normal">${{ warehouse.shipping_cost }} per item</p>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
