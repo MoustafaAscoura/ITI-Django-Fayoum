@@ -8,7 +8,7 @@ urlpatterns = [
     path('contact/', views.contact, name="contact"),
     path('warehouses/', views.GetAllWarehouses.as_view(), name="warehouses"),
     path('warehouses/details/<int:pk>', views.GetOneWarehouse.as_view(), name="warehouse_details"),
-    path('warehouses/add', views.create_warehouse, name="create_warehouse"),
+    path('warehouses/add', views.CreateWarehouse.as_view(), name="create_warehouse"),
 
     path('inventory/', views.about, name="inventory"),
     path('purchase_orders/', views.about, name="purchase_orders"),

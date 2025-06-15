@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, TemplateView
 
+from .forms import WarehouseForm
 from .models import Warehouse
 
 def index(request):
@@ -31,19 +32,19 @@ def contact(request):
 #     return render(request, 'Home/warehouse_details.html', context={"warehouse": warehouse})
 
 
-def create_warehouse(request):
-    if request.method == "GET":
-        return render(request, 'Home/create_warehouse.html')
-
-    elif request.method == "POST":
-        new_warehouse = Warehouse(
-            name=request.POST['name'],
-            location=request.POST['location'],
-            capacity=request.POST['capacity'],
-            manager_id=request.user.id
-        )
-        new_warehouse.save()
-        return redirect("/warehouses")
+# def create_warehouse(request):
+#     if request.method == "GET":
+#         return render(request, 'Home/create_warehouse.html')
+#
+#     elif request.method == "POST":
+#         new_warehouse = Warehouse(
+#             name=request.POST['name'],
+#             location=request.POST['location'],
+#             capacity=request.POST['capacity'],
+#             manager_id=request.user.id
+#         )
+#         new_warehouse.save()
+#         return redirect("/warehouses")
 
 
 # Class based views
@@ -63,13 +64,10 @@ class CreateWarehouse(CreateView):
     model = Warehouse
     template_name = "Home/create_warehouse.html"
     success_url = "/warehouses"
+    form_class = WarehouseForm
 
-    def post(self, request, *args, **kwargs):
-        new_warehouse = Warehouse(
-            name=request.POST['name'],
-            location=request.POST['location'],
-            capacity=request.POST['capacity'],
-            manager_id=request.user.id
-        )
+    def form_valid(self, form):
+        new_warehouse = form.save(commit=False)
+        new_warehouse.manager = self.request.user
         new_warehouse.save()
-        return redirect("/warehouses")
+        return super(CreateWarehouse, self).form_valid(form)

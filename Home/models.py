@@ -1,6 +1,7 @@
 import random
 
 from django.db import models
+from django.core.validators import MinLengthValidator, MaxLengthValidator, MinValueValidator, MaxValueValidator
 
 governorates = {
     'cairo': 'Cairo Governorate',
@@ -11,11 +12,11 @@ governorates = {
 }
 
 class Warehouse(models.Model):
-    name = models.CharField(max_length=100, null=False, blank=False)
+    name = models.CharField(max_length=100, null=False, blank=False, validators=[MinLengthValidator(4)])
     location = models.CharField(max_length=100, null=False, blank=False, choices=list(governorates.items()))
 
-    description = models.TextField(null=False, blank=False)
-    capacity = models.IntegerField(null=False, blank=False)
+    description = models.TextField(null=False, blank=False, validators=[MaxLengthValidator(1000)])
+    capacity = models.IntegerField(null=False, blank=False, validators=[MinValueValidator(1), MaxValueValidator(100000)])
     manager = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
@@ -30,3 +31,8 @@ class Warehouse(models.Model):
     @property
     def shipping_cost(self):
         return random.randint(10,100)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['name', 'location'], name='unique_name_and_location_constraint'),
+        ]
