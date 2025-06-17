@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.admin.views.decorators import staff_member_required
 
 from inventory.models import Product
 
 
+@login_required
 def inventory_page(request):
     page = int(request.GET.get('page') or 1)
     limit = int(request.GET.get('limit') or 10)

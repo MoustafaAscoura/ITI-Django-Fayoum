@@ -5,36 +5,5 @@
 {% endblock title %}
 
 {% block content %}
-    <form class="flex flex-col max-w-[960px] flex-1" method="post">
-        {% csrf_token %}
-        <div class="flex flex-wrap justify-between gap-3 p-4"><p
-                class="text-[#121416] tracking-light text-[32px] font-bold leading-tight min-w-72">Add New Warehouse</p>
-        </div>
-
-            {% for field in form %}
-                <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                    <label class="flex flex-col min-w-40 flex-1">
-                        <p class="text-[#121416] text-base font-medium leading-normal pb-2">{{ field.label }}</p>
-                        {{ field }}
-                        <p class="text-red-300">{% for err in field.errors %}{{ err }}{% endfor %}</p>
-                    </label>
-                </div>
-            {% endfor %}
-
-        <div class="flex justify-stretch">
-
-            <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end">
-                <button
-                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#f1f2f4] text-[#121416] text-sm font-bold leading-normal tracking-[0.015em]"
-                >
-                    <span class="truncate">Cancel</span>
-                </button>
-                <button
-                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#b2cae5] text-[#121416] text-sm font-bold leading-normal tracking-[0.015em]"
-                >
-                    <span class="truncate">Add Warehouse</span>
-                </button>
-            </div>
-        </div>
-
-    </form>{% endblock content %}
+    {% include 'components/form.html' with form=form form_title='Add new warehouse' form_button_label='Add warehouse' %}
+{% endblock content %}

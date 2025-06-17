@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView, DetailView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import WarehouseForm
 from .models import Warehouse
@@ -48,7 +49,7 @@ def contact(request):
 
 
 # Class based views
-class GetAllWarehouses(ListView):
+class GetAllWarehouses(LoginRequiredMixin, ListView):
     model = Warehouse
     template_name = "Home/warehouses.html"
     context_object_name = "warehouses"

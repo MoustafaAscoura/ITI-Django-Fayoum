@@ -2,6 +2,7 @@ import random
 
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxLengthValidator, MinValueValidator, MaxValueValidator
+from django.conf import settings
 
 governorates = {
     'cairo': 'Cairo Governorate',
@@ -17,7 +18,7 @@ class Warehouse(models.Model):
 
     description = models.TextField(null=False, blank=False, validators=[MaxLengthValidator(1000)])
     capacity = models.IntegerField(null=False, blank=False, validators=[MinValueValidator(1), MaxValueValidator(100000)])
-    manager = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True)
+    manager = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
