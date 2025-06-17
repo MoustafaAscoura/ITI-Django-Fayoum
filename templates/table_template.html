@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    About us
+{% endblock title %}
+
+{% block content %}
+    Main template inherited
+    <div>
+        {% block main_section %}
+        {% endblock main_section %}
+    </div>
+    <div>
+        {% block sub_section %}
+        {% endblock sub_section %}
+    </div>
+{% endblock content %}

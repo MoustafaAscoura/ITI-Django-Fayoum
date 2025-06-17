@@ -10,7 +10,6 @@ urlpatterns = [
     path('warehouses/details/<int:pk>', views.GetOneWarehouse.as_view(), name="warehouse_details"),
     path('warehouses/add', views.CreateWarehouse.as_view(), name="create_warehouse"),
 
-    path('inventory/', views.about, name="inventory"),
     path('purchase_orders/', views.about, name="purchase_orders"),
     path('sales_orders/', views.about, name="sales_orders"),
     path('customers/', views.about, name="customers"),
