@@ -94,7 +94,7 @@
                             ></path>
                         </svg>
                     </div>
-                    <p class="text-[#111418] text-sm font-medium leading-normal">{{ user.first_name }} {{ user.last_name }}</p>
+                    <a href="{% url 'profile' %}" class="text-[#111418] text-sm font-medium leading-normal">{{ user.full_name }}</a>
                 </div>
             {% endif %}
             {% if user.id %}

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Login
+    Create a new account
 {% endblock title %}
 
 {% block content %}
     <div class="my-5">Don't have an account? <a href="/accounts/signup">Sign up</a></div>
-    {% include 'components/form.html' with form=form form_title='Login' form_button_label='login' %}
+    {% include 'components/form.html' with form=form form_title='Signup' form_button_label='sign up' %}
 {% endblock content %}
